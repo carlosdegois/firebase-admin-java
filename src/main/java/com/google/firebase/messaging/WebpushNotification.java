@@ -81,6 +81,7 @@ public class WebpushNotification {
     addNonNull(fields, "timestamp", builder.timestampMillis);
     addNonNullNonEmpty(fields, "title", builder.title);
     addNonNull(fields, "vibrate", builder.vibrate);
+    addNonNull(fields, "click_action", builder.clickAction);
     fields.putAll(builder.customData);
     this.fields = fields.build();
   }
@@ -170,6 +171,7 @@ public class WebpushNotification {
     private String title;
     private List<Integer> vibrate;
     private final Map<String, Object> customData = new HashMap<>();
+    private String clickAction;
 
     private Builder() {}
 
@@ -376,6 +378,17 @@ public class WebpushNotification {
      */
     public Builder putAllCustomData(@NonNull Map<String, Object> fields) {
       this.customData.putAll(fields);
+      return this;
+    }
+
+    /**
+     * Sets the click action of the notification
+     *
+     * @param clickAction the action to be realized when the notification is clicked.
+     * @return This builder.
+     */
+    public Builder setClickAction(String clickAction) {
+      this.clickAction = clickAction;
       return this;
     }
 
